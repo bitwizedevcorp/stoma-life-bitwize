@@ -38,8 +38,8 @@
   --prime-six: #ffd338;
   --prime-seven: linear-gradient(-90deg, #ff7df2 0%, #ff275b 100%);
   --prime-eight: #ffed4e;
-  --prime-nine: #ff1292;
-  --prime-ten: #ff3294;
+  --prime-nine: #6e37cc;
+  --prime-ten: #6e37cc;
   --prime-eleven: #ffce4c;
   --prime-twelve: #ffe500;
 }
@@ -628,7 +628,7 @@ body .btn-three {
   border-radius: 28px;
   padding: 0 40px;
   position: relative;
-  background: var(--prime-two);
+  background: #6e37cc;
   transition: all 0.3s ease-in-out;
 }
 body .btn-three:hover {
@@ -640,7 +640,7 @@ body .btn-four {
   border-radius: 7px;
   padding: 0 40px;
   position: relative;
-  background: var(--prime-two);
+  background: #090f32;
   transition: all 0.3s ease-in-out;
 }
 body .btn-four:hover {

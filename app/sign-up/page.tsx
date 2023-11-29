@@ -1,12 +1,14 @@
 "use client";
 import Link from "next/link";
-import LoginForm from "@/app/components/common/LoginForm";
-import Seo from "../app/components/common/Seo";
-const LogIn = () => {
+import Seo from "../components/common/Seo";
+import SignUpForm from "@/app/components/common/SignUpForm";
+
+const SignUp = () => {
   const currentYear = new Date().getFullYear();
+
   return (
     <>
-      <Seo pageTitle="Login" />
+      <Seo pageTitle="Sign Up" />
       {/*
         =============================================
         Theme Main Menu
@@ -17,9 +19,12 @@ const LogIn = () => {
           <div className="d-flex align-items-center justify-content-between">
             <div className="logo order-lg-0">
               {/*<Link href="/" className="d-block">*/}
-              {/*  <img src="/images/logo/logo_01.png" alt="" width={95} />*/}
+              {/*  <img src="/images/logo/logo-stoma.png" alt="" width={95} />*/}
               {/*</Link>*/}
             </div>
+            {/*<Link href="/" className="go-back-btn fw-500 tran3s">*/}
+            {/*  Go to home*/}
+            {/*</Link>*/}
           </div>
         </div>
         {/* /.inner-content */}
@@ -34,13 +39,12 @@ const LogIn = () => {
       <div className="user-data-section d-flex align-items-center justify-content-center flex-column position-relative">
         <div className="form-wrapper position-relative m-auto">
           <div className="text-center">
-            <h2 className="tx-dark mb-30 lg-mb-10">Login</h2>
-            {/*<p className="fs-20 tx-dark">*/}
-            {/*  Still don&lsquo;t have an account?{" "}*/}
-            {/*  <Link href="/signup">Sign up</Link>*/}
-            {/*</p>*/}
+            <h2 className="tx-dark mb-30 lg-mb-10">Registration</h2>
+            <p className="fs-20 tx-dark">
+              Have an account? <Link href="/login">Login Here</Link>
+            </p>
           </div>
-          <LoginForm />
+          <SignUpForm />
         </div>
         {/* End form-wrapper */}
 
@@ -61,4 +65,4 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
+export default SignUp;
