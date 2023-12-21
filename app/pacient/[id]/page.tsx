@@ -1,28 +1,39 @@
 import Seo from "@/app/components/common/Seo";
 import DefaultHeader from "@/app/components/header/DefaultHeader";
-import Hero from "@/app/components/common/Hero";
+import { prisma } from "@/lib/prisma";
+import UpdatePacientForm from "@/app/components/common/pacienti/updatePacientForm";
 import CopyrightFooter from "@/app/components/common/CopyrightFooter";
-import AdaugaPacientForm from "@/app/components/common/pacienti/adaugaPacienti";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
+async function getPacientById(id: any) {
+  const data = prisma.pacient.findFirst({
+    where: {
+      id: id,
+    },
+  });
 
-const AdaugaPacinet = async () => {
-  const session = await getServerSession(authOptions);
-  const user = session?.user;
+  if (!data) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return data;
+}
+const Pacient = async ({ params }: any) => {
+  const { id } = params;
+  const data = await getPacientById(parseInt(id));
+
   return (
     <>
-      <Seo pageTitle="Adauga-Pacient" />
-      <DefaultHeader />;
+      <DefaultHeader />
+      <Seo pageTitle="Update Pacient" />
       <div className="user-data-section d-flex align-items-center justify-content-center flex-column position-relative">
         <div className="form-wrapper position-relative m-auto">
           <div className="text-center">
-            <h2 className="tx-dark mb-30 lg-mb-10">Adauga Pacient</h2>
+            <h2 className="tx-dark mb-30 lg-mb-10">Update Pacient</h2>
             {/*<p className="fs-20 tx-dark">*/}
             {/*  Still don&lsquo;t have an account?{" "}*/}
             {/*  <Link href="/signup">Sign up</Link>*/}
             {/*</p>*/}
           </div>
-          <AdaugaPacientForm doctorId={user.id} />
+          <UpdatePacientForm data={data} />
         </div>
         {/* End form-wrapper */}
         {/*<p className="mt-auto pt-50">Copyright @{currentYear} Bitwize inc.</p>*/}
@@ -44,4 +55,4 @@ const AdaugaPacinet = async () => {
   );
 };
 
-export default AdaugaPacinet;
+export default Pacient;

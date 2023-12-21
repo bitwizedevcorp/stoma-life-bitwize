@@ -3,29 +3,30 @@ import { ChangeEvent, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 
-const AdaugaPacientForm = (doctorId: any) => {
+const UpdatePacientForm = (data: any) => {
+  console.log(data);
   const [loading, setLoading] = useState(false);
   const [formValues, setFormValues] = useState({
-    nume: "",
-    prenume: "",
-    email: "",
-    telefon: "",
-    cnp: "",
-    date_of_birth: "",
-    judet: "",
-    town: "",
-    street: "",
-    number: "",
-    bloc: "",
-    scara: "",
-    apartament: "",
-    istoricPacientId: "",
-    doctorId: doctorId.doctorId,
+    nume: data.data.first_name,
+    prenume: data.data.last_name,
+    email: data.data.email,
+    telefon: data.data.telefon,
+    cnp: data.data.cnp,
+    date_of_birth: data.data.date_of_birth,
+    judet: data.data.judet,
+    town: data.data.town,
+    street: data.data.street,
+    number: data.data.number,
+    bloc: data.data.bloc,
+    scara: data.data.scara,
+    apartament: data.data.apartament,
+    istoricPacientId: data.data.istoricPacientId,
+    doctorId: data.data.doctorId,
   });
   const [error, setError] = useState("");
 
   const notify = () =>
-    toast("🦄 Pacient adaugat cu succes!", {
+    toast("🦄 Pacient a fost updatat cu succes!", {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -36,7 +37,7 @@ const AdaugaPacientForm = (doctorId: any) => {
       theme: "light",
     });
   const notifyError = () =>
-    toast.error("🦄 Pacientul nu a fost adaugat!", {
+    toast.error("🦄 Pacientul nu a fost updatat!", {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -67,11 +68,11 @@ const AdaugaPacientForm = (doctorId: any) => {
       scara: "",
       apartament: "",
       istoricPacientId: "",
-      doctorId: doctorId.doctorId,
+      doctorId: data.doctorId,
     });
     try {
       const res = await fetch("/api/adauga-pacient", {
-        method: "POST",
+        method: "PUT",
         body: JSON.stringify(formValues),
         headers: {
           "Content-Type": "application/json",
@@ -209,6 +210,19 @@ const AdaugaPacientForm = (doctorId: any) => {
             />
           </div>
         </div>
+        <div className="col-12">
+          <div className="input-group-meta mb-30">
+            <label>Istoric Pacient</label>
+            <input
+              type="text"
+              placeholder="Aici poti scrie istoricul pacientului"
+              required
+              name="istoricPacientId"
+              value={formValues.istoricPacientId}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
         <ToastContainer
           position="top-center"
           autoClose={5000}
@@ -235,4 +249,4 @@ const AdaugaPacientForm = (doctorId: any) => {
   );
 };
 
-export default AdaugaPacientForm;
+export default UpdatePacientForm;

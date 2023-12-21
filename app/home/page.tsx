@@ -1,15 +1,29 @@
-"use client";
+"use server";
 import DefaultHeader from "@/app/components/header/DefaultHeader";
 import Seo from "../components/common/Seo";
 import Hero from "@/app/components/common/Hero";
 import Services from "@/app/components/common/Services";
 import CopyrightFooter from "@/app/components/common/CopyrightFooter";
-const Home = () => {
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+const Home = async () => {
+  const session = await getServerSession(authOptions);
+  const user = session?.user;
+  console.log(user);
+
   return (
     <>
       <Seo pageTitle="Home" />
       <DefaultHeader />;
       <Hero />
+      <div className="col-lg-6" data-aos="fade-right">
+        <div className="title-style-one text-center text-lg-start">
+          <h2 className="main-title fw-normal tx-dark m0">
+            Bine ai revenit <span>{user.name} </span> {user.surrname}
+          </h2>
+        </div>
+        {/* /.title-style-one */}
+      </div>
       <div className="fancy-feature-nineteen position-relative pt-170 pb-160 lg-pt-100 lg-pb-80">
         <div className="container">
           <div className="row align-items-center">

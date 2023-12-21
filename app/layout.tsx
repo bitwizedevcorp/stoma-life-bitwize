@@ -4,6 +4,8 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import "../styles/index.scss";
 import ScrollToTop from "@/app/components/common/ScrollTop";
+import { ToastContainer } from "react-toastify";
+
 if (typeof window !== "undefined") {
   require("bootstrap/dist/js/bootstrap");
 }
@@ -23,6 +25,7 @@ export default function RootLayout({
       <body>
         <div className="main-page-wrapper">
           {children}
+          <ToastContainer />
           <ScrollToTop />
         </div>
       </body>

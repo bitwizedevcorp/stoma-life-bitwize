@@ -59,6 +59,11 @@ const MainMenu = () => {
                   <span>Adauga Programare</span>
                 </Link>
               </li>
+              <li>
+                <Link href="/pacientii-tai" className="dropdown-item">
+                  <span>Pacientii tai</span>
+                </Link>
+              </li>
             </ul>
           </li>
           {/* End li (pages) */}
