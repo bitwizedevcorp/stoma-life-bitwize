@@ -2,6 +2,7 @@
 import { ChangeEvent, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import Link from "next/link";
 
 const UpdatePacientForm = (data: any) => {
   console.log(data);
@@ -71,7 +72,7 @@ const UpdatePacientForm = (data: any) => {
       doctorId: data.doctorId,
     });
     try {
-      const res = await fetch("/api/adauga-pacient", {
+      const res = await fetch(`/api/edit-pacient/${data.data.id}`, {
         method: "PUT",
         body: JSON.stringify(formValues),
         headers: {
@@ -210,19 +211,7 @@ const UpdatePacientForm = (data: any) => {
             />
           </div>
         </div>
-        <div className="col-12">
-          <div className="input-group-meta mb-30">
-            <label>Istoric Pacient</label>
-            <input
-              type="text"
-              placeholder="Aici poti scrie istoricul pacientului"
-              required
-              name="istoricPacientId"
-              value={formValues.istoricPacientId}
-              onChange={handleChange}
-            />
-          </div>
-        </div>
+
         <ToastContainer
           position="top-center"
           autoClose={5000}
@@ -244,6 +233,18 @@ const UpdatePacientForm = (data: any) => {
           </button>
         </div>
         {/* End .col-12 */}
+      </div>
+      <div className="col-12">
+        <div className="input-group-meta mb-30">
+          <Link
+            href="/contact"
+            className="btn-twenty w-10 fw-100 tran3s text-uppercase mt-30"
+            data-aos="fade-up"
+            data-aos-delay="150"
+          >
+            Adauga un istoric detail despre acest pacient
+          </Link>
+        </div>
       </div>
     </form>
   );
