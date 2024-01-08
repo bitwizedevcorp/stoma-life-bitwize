@@ -4,7 +4,7 @@ import Hero from "@/app/components/common/Hero";
 import CopyrightFooter from "@/app/components/common/CopyrightFooter";
 import AdaugaPacientForm from "@/app/components/common/pacienti/adaugaPacienti";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
+import { authOptions } from "@/app/lib/auth";
 
 const AdaugaPacinet = async () => {
   const session = await getServerSession(authOptions);

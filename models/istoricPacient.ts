@@ -4,9 +4,10 @@ export interface IistoricPacient extends Document {
   numePacient: string;
   prenumePacient: string;
   ziuaProgramarii: string;
-  details: string;
+  istoric: string;
   pacientId: string;
   doctorId: string;
+  lucrare: string;
 }
 
 const istoricPacientSchema = new Schema({
@@ -16,10 +17,10 @@ const istoricPacientSchema = new Schema({
   prenumePacient: {
     type: String,
   },
-  ziuaProgramarii: {
+  data: {
     type: String,
   },
-  details: {
+  istoric: {
     type: String,
   },
   pacientId: {
@@ -27,6 +28,9 @@ const istoricPacientSchema = new Schema({
   },
 
   doctorId: {
+    type: String,
+  },
+  lucrare: {
     type: String,
   },
 });

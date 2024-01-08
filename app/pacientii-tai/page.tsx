@@ -1,9 +1,9 @@
 import DefaultHeader from "@/app/components/header/DefaultHeader";
 import Seo from "@/app/components/common/Seo";
 import Pacienti from "@/app/components/pacienti/pacienti";
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@/app/lib/prisma";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
+import { authOptions } from "@/app/lib/auth";
 
 async function getPacientiByDoctor(doctorId: any) {
   const data = await prisma.pacient.findMany({

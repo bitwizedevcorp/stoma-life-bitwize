@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@/app/lib/prisma";
 import { NextResponse } from "next/server";
 
 export async function PUT(req: Request, { params }: { params: { id: any } }) {
@@ -59,7 +59,6 @@ export async function PUT(req: Request, { params }: { params: { id: any } }) {
         doctorId,
       },
     });
-    console.log(pacient);
     return NextResponse.json({
       message: "Success",
     });

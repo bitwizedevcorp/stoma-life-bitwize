@@ -1,6 +1,6 @@
 import Seo from "@/app/components/common/Seo";
 import DefaultHeader from "@/app/components/header/DefaultHeader";
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@/app/lib/prisma";
 import UpdatePacientForm from "@/app/components/common/pacienti/updatePacientForm";
 import CopyrightFooter from "@/app/components/common/CopyrightFooter";
 async function getPacientById(id: any) {

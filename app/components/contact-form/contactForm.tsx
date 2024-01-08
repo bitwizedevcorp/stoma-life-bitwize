@@ -15,7 +15,7 @@ const ContactForm = () => {
             <div className="input-group-meta form-group mb-30">
               <input
                 type="text"
-                placeholder="Your Name*"
+                placeholder="Numele tau*"
                 name="name"
                 data-error="Name is required."
               />
@@ -28,7 +28,7 @@ const ContactForm = () => {
             <div className="input-group-meta form-group mb-50">
               <input
                 type="email"
-                placeholder="Email Address*"
+                placeholder="Adresa de email*"
                 name="email"
                 data-error="Valid email is required."
               />
@@ -40,7 +40,7 @@ const ContactForm = () => {
           <div className="col-12">
             <div className="input-group-meta form-group mb-30">
               <textarea
-                placeholder="Your message*"
+                placeholder="Mesajul tau*"
                 name="message"
                 data-error="Please,leave us a message."
                 defaultValue={""}

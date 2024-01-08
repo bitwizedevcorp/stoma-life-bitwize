@@ -5,7 +5,8 @@ import Hero from "@/app/components/common/Hero";
 import Services from "@/app/components/common/Services";
 import CopyrightFooter from "@/app/components/common/CopyrightFooter";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
+import { authOptions } from "@/app/lib/auth";
+
 const Home = async () => {
   const session = await getServerSession(authOptions);
   const user = session?.user;

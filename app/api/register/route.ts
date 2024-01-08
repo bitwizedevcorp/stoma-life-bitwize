@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@/app/lib/prisma";
 import { hash } from "bcryptjs";
 import { NextResponse } from "next/server";
 
@@ -14,9 +14,7 @@ export async function POST(req: Request) {
         oras: string;
         numar_telefon: string;
       };
-    console.log("PAROLA CUM VINE:", password);
     const hashed_password = await hash(password, 10);
-    console.log(hashed_password);
 
     const user = await prisma.user.create({
       data: {

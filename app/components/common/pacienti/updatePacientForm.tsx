@@ -5,7 +5,6 @@ import { ToastContainer, toast } from "react-toastify";
 import Link from "next/link";
 
 const UpdatePacientForm = (data: any) => {
-  console.log(data);
   const [loading, setLoading] = useState(false);
   const [formValues, setFormValues] = useState({
     nume: data.data.first_name,
@@ -25,6 +24,12 @@ const UpdatePacientForm = (data: any) => {
     doctorId: data.data.doctorId,
   });
   const [error, setError] = useState("");
+
+  const pacientToSend = {
+    numePacient: data.data.first_name,
+    prenumePacient: data.data.last_name,
+    pacientId: data.data.id,
+  };
 
   const notify = () =>
     toast("🦄 Pacient a fost updatat cu succes!", {
@@ -237,7 +242,10 @@ const UpdatePacientForm = (data: any) => {
       <div className="col-12">
         <div className="input-group-meta mb-30">
           <Link
-            href="/contact"
+            href={{
+              pathname: `/istoric-pacient/${data.data.id}`,
+              query: pacientToSend,
+            }}
             className="btn-twenty w-10 fw-100 tran3s text-uppercase mt-30"
             data-aos="fade-up"
             data-aos-delay="150"
