@@ -2,6 +2,7 @@
 const nextConfig = {
   experimental: {
     appDir: true,
+    serverComponentsExternalPackages: ["bcrypt"],
   },
   webpack: (config) => {
     config.externals = [...config.externals, "bcrypt"];
