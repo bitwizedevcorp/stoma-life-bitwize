@@ -1,3 +1,4 @@
+"use server";
 import { prisma } from "@/app/lib/prisma";
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
