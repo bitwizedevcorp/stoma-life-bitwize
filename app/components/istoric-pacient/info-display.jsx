@@ -3,7 +3,7 @@ import posts from "./data";
 import dbMongoConnect from "@/app/lib/mongodb";
 import { istoricPacient, IistoricPacient } from "@/models";
 
-async function istoricPacientFunction(pacientId: string) {
+async function istoricPacientFunction(pacientId) {
   await dbMongoConnect();
   try {
     const istoricPacientMongo = await istoricPacient.find({
@@ -17,8 +17,9 @@ async function istoricPacientFunction(pacientId: string) {
     console.log(e);
   }
 }
-const IstoricInfo = async (id: any) => {
+const IstoricInfo = async (id) => {
   const data = await istoricPacientFunction(id.id);
+  console.log(data);
   return (
     <>
       {data ? (

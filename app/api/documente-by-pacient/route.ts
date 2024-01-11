@@ -86,7 +86,7 @@ async function getFileFromS3(pacientId: number) {
       if (item.ETag) {
         if (
           extractedData.some(
-            (data) => data.eTagFile === item.ETag.replace(/"/g, ""),
+            (data) => data.eTagFile === item.ETag?.replace(/"/g, ""),
           )
         ) {
           const paramsObject = {
