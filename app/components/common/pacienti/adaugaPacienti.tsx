@@ -2,6 +2,8 @@
 import { ChangeEvent, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import notifyError from "@/app/components/notify/notifyError";
+import notify from "@/app/components/notify/notify";
 
 const AdaugaPacientForm = (doctorId: any) => {
   const [loading, setLoading] = useState(false);
@@ -23,29 +25,6 @@ const AdaugaPacientForm = (doctorId: any) => {
     doctorId: doctorId.doctorId,
   });
   const [error, setError] = useState("");
-
-  const notify = () =>
-    toast("🦄 Pacient adaugat cu succes!", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-  const notifyError = () =>
-    toast.error("🦄 Pacientul nu a fost adaugat!", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -81,10 +60,10 @@ const AdaugaPacientForm = (doctorId: any) => {
       setLoading(false);
       if (!res.ok) {
         setError((await res.json()).message);
-        notifyError();
+        notifyError("Pacientul nu a fost adaugat");
         return;
       } else {
-        notify();
+        notify("Pacientul a fost adaugat");
       }
 
       // return alert("Pacient added!");

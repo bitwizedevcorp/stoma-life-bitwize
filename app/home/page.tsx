@@ -10,7 +10,6 @@ import { authOptions } from "@/app/lib/auth";
 const Home = async () => {
   const session = await getServerSession(authOptions);
   const user = session?.user;
-  console.log(user);
 
   return (
     <>

@@ -5,7 +5,7 @@ import "aos/dist/aos.css";
 import "../styles/index.scss";
 import ScrollToTop from "@/app/components/common/ScrollTop";
 import { ToastContainer } from "react-toastify";
-
+import "../styles/globals.css";
 if (typeof window !== "undefined") {
   require("bootstrap/dist/js/bootstrap");
 }

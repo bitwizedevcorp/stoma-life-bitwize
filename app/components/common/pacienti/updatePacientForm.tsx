@@ -3,6 +3,8 @@ import { ChangeEvent, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import Link from "next/link";
+import notifyError from "@/app/components/notify/notifyError";
+import notify from "@/app/components/notify/notify";
 
 const UpdatePacientForm = (data: any) => {
   const [loading, setLoading] = useState(false);
@@ -30,29 +32,6 @@ const UpdatePacientForm = (data: any) => {
     prenumePacient: data.data.last_name,
     pacientId: data.data.id,
   };
-
-  const notify = () =>
-    toast("🦄 Pacient a fost updatat cu succes!", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-  const notifyError = () =>
-    toast.error("🦄 Pacientul nu a fost updatat!", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -88,10 +67,10 @@ const UpdatePacientForm = (data: any) => {
       setLoading(false);
       if (!res.ok) {
         setError((await res.json()).message);
-        notifyError();
+        notifyError("Pacientul nu a fost updatat cu succes");
         return;
       } else {
-        notify();
+        notify("Pacientul a fost updatat cu succes");
       }
 
       // return alert("Pacient added!");
@@ -250,7 +229,22 @@ const UpdatePacientForm = (data: any) => {
             data-aos="fade-up"
             data-aos-delay="150"
           >
-            Adauga un istoric detail despre acest pacient
+            Adauga un istoric detailt despre acest pacient
+          </Link>
+        </div>
+      </div>
+      <div className="col-12">
+        <div className="input-group-meta mb-30">
+          <Link
+            href={{
+              pathname: `/documente-pacient/${data.data.id}`,
+              query: pacientToSend,
+            }}
+            className="btn-twenty w-10 fw-100 tran3s text-uppercase mt-30"
+            data-aos="fade-up"
+            data-aos-delay="150"
+          >
+            Adauga un document pentru acest pacient
           </Link>
         </div>
       </div>

@@ -38,7 +38,6 @@ export const authOptions: NextAuthOptions = {
         // @ts-ignore
         const t = await compare(credentials.password, user.password);
         // @ts-ignore
-        console.log(t);
 
         if (!user || !(await compare(credentials.password, user.password))) {
           return null;

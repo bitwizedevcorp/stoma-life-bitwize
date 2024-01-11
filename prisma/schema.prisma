@@ -95,3 +95,10 @@ model Pacient {
    createdAt    DateTime @default(now())
 
 }
+
+model PacientToFiles {
+    id Int @id @default(autoincrement())
+    pacientId Int
+    eTagFile String
+    createdAt DateTime @default(now())
+}

@@ -1,6 +1,9 @@
 import { prisma } from "@/app/lib/prisma";
 import { hash } from "bcryptjs";
 import { NextResponse } from "next/server";
+import sendgrid from "@sendgrid/mail";
+
+sendgrid.setApiKey(process.env.SENDGRID_API_KEY || " ");
 
 export async function POST(req: Request) {
   try {
@@ -27,6 +30,18 @@ export async function POST(req: Request) {
         numar_telefon,
       },
     });
+    const credentials = `Credentialele tale sunt: ${email} si  ${password}`;
+
+    try {
+      await sendgrid.send({
+        to: email,
+        from: "bitwizecorporation@gmail.com",
+        subject: " Astea sunt datele tale pentru a putea sa te conectezi",
+        html: `<div>${credentials}</div>`,
+      });
+    } catch (e) {
+      console.log(e);
+    }
 
     return NextResponse.json({
       user: {

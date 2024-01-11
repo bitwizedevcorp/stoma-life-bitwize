@@ -21,8 +21,6 @@ const BlockContact = () => {
       content: "live chat service",
       link: "www.janolivechat.com",
       delay: "300",
-      link: "www.janolivechat.com",
-      delay: "300",
     },
   ];
 

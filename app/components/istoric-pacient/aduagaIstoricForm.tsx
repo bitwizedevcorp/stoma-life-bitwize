@@ -1,5 +1,7 @@
 "use client";
 import { ChangeEvent, useState } from "react";
+import notifyError from "@/app/components/notify/notifyError";
+import notify from "@/app/components/notify/notify";
 const AdaugaIstoricForm = (istoricPacientObject: any) => {
   const [loading, setLoading] = useState(false);
   const [formValues, setFormValues] = useState({
@@ -36,9 +38,10 @@ const AdaugaIstoricForm = (istoricPacientObject: any) => {
       });
 
       if (!res) {
+        notifyError("Istoricul nu a fost adaugat");
         throw new Error("istoricul nu a fost salvat");
       } else {
-        // notify();
+        notify("Istoricul a fost adaugat");
       }
     } catch (error: any) {
       setLoading(false);
