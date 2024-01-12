@@ -56,15 +56,15 @@ const dbMongoConnect = async () => {
   //   console.log("intru aici in functie");
   //   throw new Error("Mongo uri invalid environment");
   // }
-  const options: any = {
-    useUnifiedTopology: true,
-
-    useNewUrlParser: true,
-  };
+  // const options: any = {
+  //   useUnifiedTopology: true,
+  //
+  //   useNewUrlParser: true,
+  // };
   const MONGO_URI =
     "mongodb+srv://bitwize-user:Devbitwize@stoma.wctgomt.mongodb.net/Stoma?retryWrites=true&w=majority";
   if (!mongoose.connection.readyState) {
-    await mongoose.connect(MONGO_URI, options);
+    await mongoose.connect(MONGO_URI);
   }
 };
 
